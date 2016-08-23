@@ -1,0 +1,16 @@
+
+
+<h1>Your Portfolio</h1>
+
+<ul id="stocks">
+  <% @stocks.each do |stock| %>
+    <li>
+      <% yahoo_client = YahooFinance::Client.new %>
+      <%= stock.title %>
+      <% data = yahoo_client.quotes([stock.title], [:ask]) %>
+      <%= data[0].ask %>
+    </li>
+  <% end %>
+</ul>
+
+
